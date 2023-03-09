@@ -1,13 +1,19 @@
 # API backend Express.js Mongoose
 To start developing run `npm install` and then `npm run start:nodemon`
 
-## Mongo DB
+Instructions:
 
-The project works with mongo DB.
-For backend please setup database:
+```
+npm i
+```
 
-```bash
+Setup Mongo DB:
+```
 docker run --name mongodb -d -p 27017:27017 mongo
+```
+
+```
+npm run dev
 ```
 
 Frontend repository: https://github.com/gastons-tiltins/MD26_Vue.js_jokes_API
