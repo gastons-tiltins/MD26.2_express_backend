@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 mongoose.set('strictQuery', false);
 
-const COLLECTION_NAME = 'animals';
+const COLLECTION_NAME = 'jokes';
 
 const mongoConnect = async () => {
   await mongoose

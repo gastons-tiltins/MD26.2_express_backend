@@ -3,7 +3,7 @@ import {Request, Response} from 'express';
 import bodyparser from 'body-parser';
 import cors from 'cors';
 import mongoConnect from './dbcon';
-import Animals from './schema';
+import Jokes from './schema';
 
 const app = express();
 
@@ -16,34 +16,22 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Application works!');
 });
 
-type Filter = {
-  category?: 'Cat' | 'Dog';
-};
-
-app.get('/animals', (req: Request, res: Response) => {
-  console.log(req.query);
-
-  const filter: Filter = {};
-
-  if (req.query.catsOnly === 'true') {
-    filter.category = 'Cat';
-  }
-
-  Animals.find(filter)
+app.get('/jokes', (req: Request, res: Response) => {
+  Jokes.find()
     .then((data) => res.json(data))
     .catch((err) => res.send(err));
 });
 
-app.post('/animals', (req: Request, res: Response) => {
-  const animalBody = req.body;
-  Animals.create(animalBody)
+app.post('/jokes', (req: Request, res: Response) => {
+  const jokesBody = req.body;
+  Jokes.create(jokesBody)
     .then((data) => res.json(data))
     .catch((err) => res.send(err));
 });
 
-app.delete('/animals/:id', (req, res) => {
-  const animalId = req.params.id;
-  Animals.deleteOne({_id: animalId})
+app.delete('/jokes/:id', (req, res) => {
+  const jokeId = req.params.id;
+  Jokes.deleteOne({_id: jokeId})
     .then(() => res.json('Record deleted.'))
     .catch((err) => res.send(err));
 });

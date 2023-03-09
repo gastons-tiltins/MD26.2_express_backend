@@ -1,13 +1,7 @@
 import mongoose from 'mongoose';
 
-const animalSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    // minLength: 2,
-    // maxLength: 20,
-  },
-  category: {
+const jokesSchema = new mongoose.Schema({
+  joke: {
     type: String,
     required: true,
     // minLength: 2,
@@ -15,4 +9,4 @@ const animalSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Animals', animalSchema);
+export default mongoose.model('Jokes', jokesSchema);
